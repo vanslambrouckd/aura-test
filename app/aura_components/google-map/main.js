@@ -35,6 +35,16 @@ define(['./map'], function(google) {
             console.log(this.options);
 
 
+            console.log('sandbox', this.sandbox);
+            /*
+            this.sandbox.start([{
+                name: 'google-map',
+                options: {
+                    el: el
+                }
+            }]);
+*/
+
             this.addresses = [];
             this.addAddress(37.425514, -122.138615);
             this.addAddress(50.95763, 3.11101);
@@ -56,8 +66,9 @@ define(['./map'], function(google) {
                 mapTypeId: google.maps.MapTypeId.ROADMAP,
                 center: this.addresses[0]
             };
-            this.html('<div style="width:100%;height:600px;background-color:#ccc;" id="googleMaps"></div>');
+            this.html('<div style="width:100%;height:600px;background-color:#ccc;" id="googleMaps">data-aura-component="google-map-marker"></div></div>');
 
+            var that = this;
             //this.addresses.forEeach(function(address) {
             for (var i = 0; i < this.addresses.length; i++) {
                 var address = this.addresses[i];
@@ -68,6 +79,16 @@ define(['./map'], function(google) {
                     animation: google.maps.Animation.DROP,
                     position: address
                 });
+
+                var el = $('<div data-aura-component="google-map-marker" />');
+                /*
+                that.sandbox.start([{
+                    name: 'google-map',
+                    options: {
+                        el: el
+                    }
+                }]);
+*/
             }
             var map = new google.maps.Map(document.getElementById('googleMaps'), mapOptions);
 
