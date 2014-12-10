@@ -1,0 +1,10 @@
+.DS_Store
+node_modules
+components
+bower_components
+app/components
+npm-debug.log
+/lib
+/tmp
+/dist
+
